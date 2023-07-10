@@ -1,5 +1,5 @@
 import { useEffect, useState, FC } from 'react'
-import './ColorPicker.css'
+// import './ColorPicker.css'
 
 interface ColorPickerProps {
   onChange: (color: string) => void
