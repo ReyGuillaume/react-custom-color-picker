@@ -1,0 +1,33 @@
+:root {
+  --black: #0a0a0a;
+  --white: #f9f9f9;
+  --item-size: 1.5em;
+}
+
+.rccp.color-picker {
+  position: relative;
+}
+.rccp .picker {
+  border: var(--white) .15em solid;
+}
+.rccp .color-picker-interface {
+  position: absolute;
+  background-color: var(--white);
+  box-shadow: 0 0 5px var(--black);
+  border-radius: .4em;
+  padding: .75em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75em;
+  width: calc(var(--item-size) * 4 + 3 * .75em);
+  z-index: 9999999999;
+}
+.rccp .item, .rccp .picker {
+  width: var(--item-size);
+  height: var(--item-size);
+  border-radius: .25em;
+  box-shadow: 0 0 2px var(--black);
+}
+.rccp .item.selected {
+  box-shadow: 0 0 0 .125em var(--white), 0 0 0 .25em #5050ff;
+}
