@@ -1,6 +1,6 @@
 import ColorPicker from './ColorPicker'
 
 const lib = () => {
-  ColorPicker: ColorPicker
+  return { ColorPicker: ColorPicker }
 }
 export default lib()
