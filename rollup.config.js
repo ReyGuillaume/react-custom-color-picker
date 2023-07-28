@@ -1,30 +1,53 @@
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import typescript from '@rollup/plugin-typescript'
-import dts from 'rollup-plugin-dts'
+import styles from 'rollup-plugin-styles'
+const autoprefixer = require('autoprefixer')
+import babel from '@rollup/plugin-babel'
 
-import packageJson from './package.json' assert {type: 'json'}
+// the entry point for the library
+const input = 'src/index.js'
 
-export default [
+//
+var MODE = [
   {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
-    plugins: [resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' })],
+    fomart: 'cjs',
   },
   {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
+    fomart: 'esm',
+  },
+  {
+    fomart: 'umd',
   },
 ]
+
+var config = []
+
+MODE.map(m => {
+  var conf = {
+    input: input,
+    output: {
+      // then name of your package
+      name: 'react-awesome-buttons',
+      file: `dist/index.${m.fomart}.js`,
+      format: m.fomart,
+      exports: 'auto',
+    },
+    // this externelizes react to prevent rollup from compiling it
+    external: ['react', /@babel\/runtime/],
+    plugins: [
+      // these are babel comfigurations
+      babel({
+        exclude: 'node_modules/**',
+        plugins: ['@babel/transform-runtime'],
+        babelHelpers: 'runtime',
+      }),
+      // this adds support for styles
+      styles({
+        postcss: {
+          plugins: [autoprefixer()],
+        },
+      }),
+    ],
+  }
+  config.push(conf)
+})
+
+export default [...config]
