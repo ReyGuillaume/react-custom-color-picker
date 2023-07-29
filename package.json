@@ -8,6 +8,11 @@
   "scripts": {
     "build": "rollup -c"
   },
+  "homepage": "https://github.com/ReyGuillaume/react-custom-color-picker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReyGuillaume/react-custom-color-picker.git"
+  },
   "license": "ISC",
   "peerDependencies": {
     "react": "^17.0.1",
