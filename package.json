@@ -1,7 +1,7 @@
 {
   "name": "react-custom-color-picker",
   "description": "Small react component library for a ColorPicker.",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "type": "module",
   "author": "Guillaume Rey",
   "module": "dist/index.esm.js",

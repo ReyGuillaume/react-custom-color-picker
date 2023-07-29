@@ -1,4 +1,4 @@
-![Color Picker](ColorPicker.png "ColorPicker.jsx")
+![Color Picker](https://github.com/ReyGuillaume/react-custom-color-picker/blob/main/ColorPicker.png "ColorPicker.jsx")
 
 This color picker developed for react lets you choose from a number of predefined colors.
 
